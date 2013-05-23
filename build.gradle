@@ -1,0 +1,60 @@
+//
+// A basic Android application that follows all the conventions
+//
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.3'
+    }
+}
+apply plugin: 'android'
+
+android {
+    testBuildType = "debug"
+
+    defaultConfig {
+        versionCode = 1
+        versionName = "0.1"
+        minSdkVersion = 9
+        targetSdkVersion = 17
+
+        compileSdkVersion 17
+        buildConfig "private final static boolean DEFAULT = true;", \
+                    "private final static String FOO = \"foo\";"
+    }
+
+    
+    buildTypes {
+        debug {
+            packageNameSuffix = ".debug"
+
+            buildConfig "private final static boolean DEBUG2 = false;"
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    aaptOptions {
+        noCompress "txt"
+    }
+    sourceSets {
+          main {
+              manifest {
+                  srcFile 'AndroidManifest.xml'
+              }
+              java {
+                  srcDir 'src'
+              }
+              res {
+                  srcDir 'res'
+              }
+              assets {
+                  srcDir 'assets'
+              }
+              resources {
+                  srcDir 'src'
+              }
+          }
+      }
+}
