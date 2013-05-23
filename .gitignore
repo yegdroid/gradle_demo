@@ -1,4 +1,5 @@
 bin/
 gen/
-properties.gradle
+gradle.properties
 .gradle
+build/
