@@ -6,13 +6,15 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.3'
+        classpath 'com.android.tools.build:gradle:0.4.2'
     }
 }
 apply plugin: 'android'
 
 android {
     testBuildType = "debug"
+	compileSdkVersion 17
+	buildToolsVersion "17"
 
     defaultConfig {
         versionCode = 1
@@ -20,7 +22,6 @@ android {
         minSdkVersion = 9
         targetSdkVersion = 17
 
-        compileSdkVersion 17
         buildConfig "private final static boolean DEFAULT = true;", \
                     "private final static String FOO = \"foo\";"
     }
@@ -75,7 +76,4 @@ if (project.hasProperty('storeFile') &&
     android.signingConfigs.release.storeFile = file(storeFile)
     android.signingConfigs.release.storePassword = storePassword
     android.signingConfigs.release.keyPassword = keyPassword
-} else {
-    buildTypes.release.signingConfig = null
-
 }

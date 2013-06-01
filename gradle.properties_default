@@ -1,0 +1,7 @@
+
+signingConfigs {
+storeFile = /Users/you/.keystore/android.keystore
+storePassword = 
+keyAlias = android
+keyPassword = x
+}
